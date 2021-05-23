@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: postgresql
+  
+server:
+  port: 8080
+--- 
+spring:      
+  profiles: postgresql
+  datasource:    
+    url: jdbc:postgresql://localhost:5432/SPay?
+    username: postgres
+    password: root  
