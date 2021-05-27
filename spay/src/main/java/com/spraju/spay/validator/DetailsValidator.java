@@ -4,6 +4,8 @@ import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
 
+import com.spraju.spay.model.User;
+
 @Component
 public class DetailsValidator {
 	
@@ -16,5 +18,15 @@ public class DetailsValidator {
 	public Predicate<String> checkPasswordFormat=(password)->password.matches(".{8,20}") && password.matches(".*[A-Z].*")
 			&& password.matches(".*[a-z].*")  && password.matches(".*[0-9].*") && password.matches(".*[!@#$%^&*(+_)].*");
 	
-
+	public void registrationDetailsValidator(User user) throws Exception {
+		if(!checkEmailFormat.test(user.getEmailId()))
+			throw new Exception("RegistrationDetailsValidator.INVALID_EMAIL");
+		if(!checkNameFormat.test(user.getName()))
+			throw new Exception("RegistrationDetailsValidator.INVALID_NAME");
+		if(!checkPhoneNumberFormat.test( String.valueOf(user.getPhoneNumber())))
+			throw new Exception("RegistrationDetailsValidator.INVALID_NUMBER");
+		if(!checkPasswordFormat.test(user.getPassword()))
+			throw new Exception("RegistrationDetailsValidator.INVALID_PASSWORD");
+		
+	}
 }

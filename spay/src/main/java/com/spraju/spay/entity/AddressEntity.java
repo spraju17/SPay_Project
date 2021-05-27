@@ -87,7 +87,7 @@ public class AddressEntity {
 		this.defaultFlag = defaultFlag;
 	}
 	
-	public static Address prepareAddressEntity(AddressEntity addressEntity)
+	public static Address prepareAddress(AddressEntity addressEntity)
 	{
 		Address address=new Address();
 		address.setAddressId(addressEntity.getAddressId());

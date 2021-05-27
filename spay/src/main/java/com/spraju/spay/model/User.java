@@ -12,7 +12,7 @@ public class User {
 	private Integer userId;
 	private String emailId;
 	private String name;
-	private Long phoneNumber;
+	private String phoneNumber;
 	private String password;
 	private UserRole userRole;
 	private AccountStatus accountStatus;
@@ -53,10 +53,10 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(Long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getPassword() {
@@ -111,10 +111,10 @@ public class User {
 	public static UserEntity prepareUserEntity(User user) {
 		UserEntity userEntity=new UserEntity();
 		userEntity.setAccountStatus(user.getAccountStatus());
-		userEntity.setAddressEntity(Address.prepareAddressEntity(user.getAddress()));
-		List<Card> cards=user.getUserCards();
-		List<CardEntity> cardEntities = cards.stream().map(Card::preparecardEntity).collect(Collectors.toCollection(ArrayList::new));
-		userEntity.setCardEntities(cardEntities);
+		//userEntity.setAddressEntity(Address.prepareAddressEntity(user.getAddress()));
+		//List<Card> cards=user.getUserCards();
+		//List<CardEntity> cardEntities = cards.stream().map(Card::preparecardEntity).collect(Collectors.toCollection(ArrayList::new));
+		//userEntity.setCardEntities(cardEntities);
 		userEntity.setEmailId(user.getEmailId());
 		userEntity.setName(user.getName());
 		userEntity.setPassword(user.getPassword());
@@ -122,10 +122,10 @@ public class User {
 		userEntity.setSecurityQuestionAnswer(user.getSecurityQuestionAnswer());
 		userEntity.setSecurityQuestionEntity(SecurityQuestion.prepareSecurityQuestionEntity(user.getSecurityQuestion()));
 		userEntity.setTierLevel(user.getTierLevel());
-		List<TransactionEntity> transactionEntities=user.getUserTransactions().stream().map(Transaction::prepareTransactionEntity).collect(Collectors.toCollection(ArrayList::new));
-		userEntity.setTransactionEntities(transactionEntities);
+		//List<TransactionEntity> transactionEntities=user.getUserTransactions().stream().map(Transaction::prepareTransactionEntity).collect(Collectors.toCollection(ArrayList::new));
+		//userEntity.setTransactionEntities(transactionEntities);
 		userEntity.setUserRole(user.getUserRole());
-		userEntity.setUserWalletEntity(UserWallet.prepareUserWalletEntity(user.getUserWallet()));
+		//userEntity.setUserWalletEntity(UserWallet.prepareUserWalletEntity(user.getUserWallet()));
 		return userEntity;
 		
 	}

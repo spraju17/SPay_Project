@@ -2,6 +2,7 @@ create table SECURITY_QUESTION(
 	SECURITY_QUESTION_ID Integer primary key,
     SECURITY_QUESTION varchar(100) not null unique
     );
+
 create table ADDRESS(
 	ADDRESS_ID serial primary key,
 	LINE_1 varchar(20),
@@ -21,16 +22,16 @@ create table USER_WALLET(
 
 create table REGISTEREDUSER(
 	USER_ID SERIAL not null primary key,
-    EMAIL_ID varchar(25) not null unique,
-    NAME varchar(30) not null,
+    EMAIL_ID varchar(64) not null unique,
+    NAME varchar(40) not null,
     PHONE_NUMBER varchar(12) not null unique,
-    PASSWORD varchar(15) not null,
+    PASSWORD varchar(150),
     USER_ROLE varchar(10) not null,
     ACCOUNT_STATUS varchar(10) not null,
     SECURITY_QUESTION_ID Integer not null references SECURITY_QUESTION(SECURITY_QUESTION_ID),
     SECURITY_ANSWER varchar(50) not null,
     ADDRESS_ID Integer references ADDRESS(ADDRESS_ID),
-	TIER_LEVEL Integer,
+	TIER_LEVEL varchar(10) not null,
 	WALLET_ID Integer references USER_WALLET(WALLET_ID)	
     );
 create table TRANSACTIONS(

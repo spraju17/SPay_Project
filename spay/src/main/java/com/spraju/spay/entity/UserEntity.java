@@ -1,5 +1,9 @@
 package com.spraju.spay.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +20,14 @@ import javax.persistence.Table;
 
 
 import com.spraju.spay.model.AccountStatus;
+import com.spraju.spay.model.Address;
+import com.spraju.spay.model.Card;
+import com.spraju.spay.model.SecurityQuestion;
 import com.spraju.spay.model.TierLevel;
+import com.spraju.spay.model.Transaction;
+import com.spraju.spay.model.User;
 import com.spraju.spay.model.UserRole;
+import com.spraju.spay.model.UserWallet;
 
 
 @Entity
@@ -32,7 +42,7 @@ public class UserEntity {
 	@Column(name = "NAME")
 	private String name;
 	@Column(name = "PHONE_NUMBER")
-	private Long phoneNumber;
+	private String phoneNumber;
 	@Column(name = "PASSWORD")
 	private String password;
 	@Column(name = "USER_ROLE")
@@ -79,10 +89,10 @@ public class UserEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(Long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getPassword() {
@@ -146,6 +156,28 @@ public class UserEntity {
 	}
 	public void setTransactionEntities(java.util.List<TransactionEntity> transactionEntities) {
 		this.transactionEntities = transactionEntities;
+	}
+	
+	public static User prepareUser(UserEntity userEntity) {
+		User user=new User();
+		user.setAccountStatus(userEntity.getAccountStatus());
+		user.setAddress(AddressEntity.prepareAddress(userEntity.getAddressEntity()));
+		List<CardEntity> cardEntities=userEntity.getCardEntities();
+		List<Card> cards = cardEntities.stream().map(CardEntity::prepareCard).collect(Collectors.toCollection(ArrayList::new));
+		user.setUserCards(cards);
+		user.setEmailId(userEntity.getEmailId());
+		user.setName(userEntity.getName());
+		user.setPassword(userEntity.getPassword());
+		user.setPhoneNumber(userEntity.getPhoneNumber());
+		user.setSecurityQuestionAnswer(userEntity.getSecurityQuestionAnswer());
+		user.setSecurityQuestion(SecurityQuestionEntity.prepareSecurityQuestion(userEntity.getSecurityQuestionEntity()));
+		user.setTierLevel(userEntity.getTierLevel());
+		List<Transaction> transactions=userEntity.getTransactionEntities().stream().map(TransactionEntity::prepareTransaction).collect(Collectors.toCollection(ArrayList::new));
+		user.setUserTransactions(transactions);
+		user.setUserRole(userEntity.getUserRole());
+		user.setUserWallet(UserWalletEntity.prepareUserWallet(userEntity.getUserWalletEntity()));
+		return user;
+		
 	}
 	
 	

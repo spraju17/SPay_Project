@@ -20,6 +20,7 @@ public class SecurityQuestion {
 	
 	public static SecurityQuestionEntity prepareSecurityQuestionEntity(SecurityQuestion securityQuestion) {
 		SecurityQuestionEntity securityQuestionEntity=new SecurityQuestionEntity();
+		securityQuestionEntity.setSecurityQuestionID(securityQuestion.getSecurityQuestionID());
 		securityQuestionEntity.setSecurityQuestion(securityQuestion.getSecurityQuestion());
 		return securityQuestionEntity;
 		
