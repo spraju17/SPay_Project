@@ -34,6 +34,8 @@ create table REGISTEREDUSER(
 	TIER_LEVEL varchar(10) not null,
 	WALLET_ID Integer references USER_WALLET(WALLET_ID)	
     );
+create index email_password_id on registereduser (EMAIL_ID) include (PASSWORD,USER_ID);
+
 create table TRANSACTIONS(
 	TRANSACTION_ID serial primary key,
 	SENDER Integer,

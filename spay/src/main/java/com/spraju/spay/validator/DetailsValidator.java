@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 import org.springframework.stereotype.Component;
 
 import com.spraju.spay.model.User;
+import com.spraju.spay.utility.LoginCredentials;
 
 @Component
 public class DetailsValidator {
@@ -28,5 +29,12 @@ public class DetailsValidator {
 		if(!checkPasswordFormat.test(user.getPassword()))
 			throw new Exception("RegistrationDetailsValidator.INVALID_PASSWORD");
 		
+	}
+	
+	public void loginCredentialsValidator(LoginCredentials loginCredentials) throws Exception {
+		if(!checkPasswordFormat.test(loginCredentials.getPassword()))
+			throw new Exception("Login.INVALID_CREDENTIALS");
+		if(!checkEmailFormat.test(loginCredentials.getEmailId()))
+			throw new Exception("Login.INVALID_CREDENTIALS");
 	}
 }
