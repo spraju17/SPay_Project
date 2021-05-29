@@ -6,6 +6,7 @@ public class LoginCredentials {
 	private String securityQuestionAnswer;
 	private String phoneNumber;
 	private String resetPassword;
+	
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}

@@ -160,22 +160,23 @@ public class UserEntity {
 	
 	public static User prepareUser(UserEntity userEntity) {
 		User user=new User();
+		user.setUserId(userEntity.getUserId());
 		user.setAccountStatus(userEntity.getAccountStatus());
-		user.setAddress(AddressEntity.prepareAddress(userEntity.getAddressEntity()));
-		List<CardEntity> cardEntities=userEntity.getCardEntities();
-		List<Card> cards = cardEntities.stream().map(CardEntity::prepareCard).collect(Collectors.toCollection(ArrayList::new));
-		user.setUserCards(cards);
+		//user.setAddress(AddressEntity.prepareAddress(userEntity.getAddressEntity()));
+		//List<CardEntity> cardEntities=userEntity.getCardEntities();
+		//List<Card> cards = cardEntities.stream().map(CardEntity::prepareCard).collect(Collectors.toCollection(ArrayList::new));
+		//user.setUserCards(cards);
 		user.setEmailId(userEntity.getEmailId());
 		user.setName(userEntity.getName());
 		user.setPassword(userEntity.getPassword());
 		user.setPhoneNumber(userEntity.getPhoneNumber());
 		user.setSecurityQuestionAnswer(userEntity.getSecurityQuestionAnswer());
-		user.setSecurityQuestion(SecurityQuestionEntity.prepareSecurityQuestion(userEntity.getSecurityQuestionEntity()));
+		//user.setSecurityQuestion(SecurityQuestionEntity.prepareSecurityQuestion(userEntity.getSecurityQuestionEntity()));
 		user.setTierLevel(userEntity.getTierLevel());
-		List<Transaction> transactions=userEntity.getTransactionEntities().stream().map(TransactionEntity::prepareTransaction).collect(Collectors.toCollection(ArrayList::new));
-		user.setUserTransactions(transactions);
+		//List<Transaction> transactions=userEntity.getTransactionEntities().stream().map(TransactionEntity::prepareTransaction).collect(Collectors.toCollection(ArrayList::new));
+		//user.setUserTransactions(transactions);
 		user.setUserRole(userEntity.getUserRole());
-		user.setUserWallet(UserWalletEntity.prepareUserWallet(userEntity.getUserWalletEntity()));
+		//user.setUserWallet(UserWalletEntity.prepareUserWallet(userEntity.getUserWalletEntity()));
 		return user;
 		
 	}

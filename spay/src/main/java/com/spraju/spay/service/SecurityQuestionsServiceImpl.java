@@ -2,6 +2,7 @@ package com.spraju.spay.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -21,7 +22,13 @@ public class SecurityQuestionsServiceImpl implements SecurityQuestionsService {
 	SecurityQuestionsDAO securityQuestionsDAO;
 
 	@Override
-	public List<SecurityQuestion> getSecurityQuestions() {
+	public List<SecurityQuestion> getSecurityQuestions(Integer securityQuestionId) {
+		if(securityQuestionId!=null)
+		{
+			Optional<SecurityQuestionEntity> securityQuestionFromDB = securityQuestionsDAO.findById(securityQuestionId);
+			return List.of(SecurityQuestionEntity.prepareSecurityQuestion(securityQuestionFromDB.get()));
+		}
+		else
 		 return securityQuestionsDAO.findAll().stream().map(SecurityQuestionEntity::prepareSecurityQuestion).collect(Collectors.toCollection(ArrayList::new));
 	}
 

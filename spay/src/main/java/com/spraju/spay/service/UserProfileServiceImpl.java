@@ -22,15 +22,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public User getUserProfileDetaials(Integer userId) throws Exception {
 		
 		Optional<UserEntity> userEntity=userDAO.findById(userId);
-		System.out.println(userEntity);
 		if(userEntity.isEmpty())
-			throw new Exception("Login.INVALID_CREDENTIALS");
+			throw new Exception("Login.INVALID_USERID");
 		User user=UserEntity.prepareUser(userEntity.get());
-		System.out.println(user);
-		return user;
-		
-		
-		
+		return user;	
 	}
 
 }

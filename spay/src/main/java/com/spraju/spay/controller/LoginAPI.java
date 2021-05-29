@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spraju.spay.service.LoginService;
+import com.spraju.spay.service.SPayUserDetailsServiceImpl;
 import com.spraju.spay.utility.LoginCredentials;
 import com.spraju.spay.utility.ResponseMessage;
+import com.spraju.spay.utility.SPayUserDetails;
 
 
 @RestController
@@ -20,6 +22,7 @@ public class LoginAPI {
 	
 	@Autowired
 	LoginService loginService;
+	
 	
 	@PostMapping("/userlogin")
 	public ResponseEntity<ResponseMessage> userlogin(@RequestBody LoginCredentials loginCredentials) throws Exception {
