@@ -27,9 +27,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public Integer userlogin(LoginCredentials loginCredentials) throws Exception {
-		System.out.println("service hitted");
 		detailsValidator.loginCredentialsValidator(loginCredentials);
-		System.out.println("validations done");
 		List<Object[]> passwordAndUserid = userDAO.getPasswordByEmailId(loginCredentials.getEmailId());
 		String passwordFromDB=(String) passwordAndUserid.get(0)[0];
 		if(BCrypt.checkpw(loginCredentials.getPassword(), passwordFromDB))

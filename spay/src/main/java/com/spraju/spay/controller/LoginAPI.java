@@ -23,7 +23,6 @@ public class LoginAPI {
 	
 	@PostMapping("/userlogin")
 	public ResponseEntity<ResponseMessage> userlogin(@RequestBody LoginCredentials loginCredentials) throws Exception {
-		System.out.println("api hitted");
 		ResponseMessage responseMessage=new ResponseMessage();
 		responseMessage.setResponseCode(200);
 		responseMessage.setResponseMessage(loginService.userlogin(loginCredentials) + "logged in");
