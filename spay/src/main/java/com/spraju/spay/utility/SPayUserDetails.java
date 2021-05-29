@@ -9,10 +9,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class SPayUserDetails implements UserDetails {
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String password;
 	private String userName;
