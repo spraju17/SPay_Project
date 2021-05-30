@@ -1,5 +1,6 @@
 package com.spraju.spay.utility;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -15,10 +16,9 @@ public class SPayUserDetails implements UserDetails {
 	private List<GrantedAuthority> grantedAuthorities;
 	
 
-	public SPayUserDetails(LoginCredentials loginCredentials) {
+	public SPayUserDetails(LoginCredentials loginCredentials) throws NoSuchAlgorithmException {
 		this.password=loginCredentials.getPassword();
 		this.userName=loginCredentials.getEmailId();
-		//this.grantedAuthorities.add(new SimpleGrantedAuthority("ADMIN"));
 		this.grantedAuthorities=Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		
 		

@@ -19,11 +19,11 @@ import com.spraju.spay.service.SPayUserDetailsServiceImpl;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
-//	@Autowired
-//	UserDetailsService userDetailsService;
-//	
 	@Autowired
-	SPayUserDetailsServiceImpl sPayUserDetailsServiceImpl;
+	UserDetailsService userDetailsService;
+	
+//	@Autowired
+//	SPayUserDetailsServiceImpl sPayUserDetailsServiceImpl;
 	
 	@Autowired
 	JWTRequestFilter jwtRequestFilter;
@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//auth.inMemoryAuthentication().withUser("user").password("user").roles("ADMIN");
-		auth.userDetailsService(sPayUserDetailsServiceImpl);
+		auth.userDetailsService(userDetailsService);
 	}
 	
 	@Bean

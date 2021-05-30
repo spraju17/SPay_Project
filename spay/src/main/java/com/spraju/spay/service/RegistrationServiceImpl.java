@@ -21,8 +21,6 @@ public class RegistrationServiceImpl implements RegistrationService {
 	@Autowired
 	DetailsValidator detailsValidator;
 	
-	@Autowired
-	PasswordEncryptDecrypt passwordEncryptDecrypt;
 	
 	@Autowired
 	UserDAO userDAO;
@@ -39,7 +37,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 		user.setTierLevel(TierLevel.ONE);
 		user.setAccountStatus(AccountStatus.ACTIVE);
 		user.setUserRole(UserRole.ADMIN);
-		user.setPassword(passwordEncryptDecrypt.passwordEncryptor.apply(user.getPassword()));
+		user.setPassword(PasswordEncryptDecrypt.toHexString(PasswordEncryptDecrypt.getSHA(user.getPassword())));
 		UserEntity userEntity=User.prepareUserEntity(user);
 		userDAO.save(userEntity);
 		return "Sucessfully added";

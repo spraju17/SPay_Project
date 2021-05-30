@@ -17,7 +17,7 @@ public interface UserDAO extends JpaRepository<UserEntity, Integer> {
 	String getPhoneNumberByEmailId (@Param("emailid") String emailid);
 	
 	@Query("select user.password,user.userId from UserEntity user where user.emailId= :emailid")
-	List<Object[]> getPasswordByEmailId (@Param("emailid") String emailid);
+	List<Object[]> getPasswordandUserIDByEmailId (@Param("emailid") String emailid);
 	
 	@Query("select user.securityQuestionAnswer from UserEntity user where user.emailId= :emailid")
 	String getSecurityQuestionAnswerByEmailId (@Param("emailid") String emailid);

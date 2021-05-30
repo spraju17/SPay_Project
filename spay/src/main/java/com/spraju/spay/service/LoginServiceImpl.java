@@ -32,18 +32,10 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public Integer userlogin(LoginCredentials loginCredentials) throws Exception {
 		detailsValidator.loginCredentialsValidator(loginCredentials);
-		List<Object[]> passwordAndUserid = userDAO.getPasswordByEmailId(loginCredentials.getEmailId());
+		List<Object[]> passwordAndUserid = userDAO.getPasswordandUserIDByEmailId(loginCredentials.getEmailId());
 		String passwordFromDB=(String) passwordAndUserid.get(0)[0];
-		if(BCrypt.checkpw(loginCredentials.getPassword(), passwordFromDB))
-		{	
-//			try {System.out.println(loginCredentials.getPassword());
-//				SPayUserDetails sPayUserDetails=new SPayUserDetails(loginCredentials);
-//				System.out.println(sPayUserDetails.getPassword());
-//				sPayUserDetailsServiceImpl.invokeLoaduserByUsername(sPayUserDetails);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+		if(passwordFromDB.equals(PasswordEncryptDecrypt.toHexString(PasswordEncryptDecrypt.getSHA(loginCredentials.getPassword()))))
+		{			
 			return (Integer) passwordAndUserid.get(0)[1];
 		}
 		else
