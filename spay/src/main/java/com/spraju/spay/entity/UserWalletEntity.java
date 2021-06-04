@@ -17,7 +17,7 @@ public class UserWalletEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userWalletId;
 	@Column(name = "WALLET_AMOUNT")
-	private Float walletAmount;
+	private Double walletAmount;
 	@Column(name = "POINTS")
 	private Integer points;
 	public Integer getUserWalletId() {
@@ -26,10 +26,10 @@ public class UserWalletEntity {
 	public void setUserWalletId(Integer userWalletId) {
 		this.userWalletId = userWalletId;
 	}
-	public Float getWalletAmount() {
+	public Double getWalletAmount() {
 		return walletAmount;
 	}
-	public void setWalletAmount(Float walletAmount) {
+	public void setWalletAmount(Double walletAmount) {
 		this.walletAmount = walletAmount;
 	}
 	public Integer getPoints() {

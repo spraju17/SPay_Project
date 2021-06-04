@@ -64,6 +64,7 @@ public class CardEntity {
 	}
 	public static Card prepareCard(CardEntity cardEntity) {
 		Card card=new Card();
+		card.setCardId(cardEntity.getCardId());
 		card.setCardNumber(cardEntity.getCardNumber());
 		card.setCvv(cardEntity.getCvv());
 		card.setDefaultFlag(cardEntity.getDefaultFlag());

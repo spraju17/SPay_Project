@@ -34,7 +34,6 @@ public class JWTAuthenticateAPI {
 	
 	@PostMapping
 	public ResponseEntity<JWTResponse> jwtAuthenticate(@RequestBody JWTCredentials jwtCredentials) throws AuthenticationException, NoSuchAlgorithmException {
-		
 		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtCredentials.getUsername(), PasswordEncryptDecrypt.toHexString(PasswordEncryptDecrypt.getSHA(jwtCredentials.getPassword()))));
 		UserDetails userDetails=sPayUserDetailsServiceImpl.loadUserByUsername(jwtCredentials.getUsername());
 		String jwt=jwtUtil.generateToken(userDetails);

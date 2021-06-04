@@ -125,7 +125,7 @@ public class User {
 		//List<TransactionEntity> transactionEntities=user.getUserTransactions().stream().map(Transaction::prepareTransactionEntity).collect(Collectors.toCollection(ArrayList::new));
 		//userEntity.setTransactionEntities(transactionEntities);
 		userEntity.setUserRole(user.getUserRole());
-		//userEntity.setUserWalletEntity(UserWallet.prepareUserWalletEntity(user.getUserWallet()));
+		userEntity.setUserWalletEntity(UserWallet.prepareUserWalletEntity(user.getUserWallet()));
 		return userEntity;
 		
 	}

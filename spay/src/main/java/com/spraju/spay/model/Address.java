@@ -77,6 +77,7 @@ public class Address {
 		addressEntity.setLine1(address.getLine1());
 		addressEntity.setLine2(address.getLine2());
 		addressEntity.setZipCode(address.getZipCode());
+		addressEntity.setState(address.getState());
 		return addressEntity;
 	}
 	

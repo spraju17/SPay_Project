@@ -22,20 +22,25 @@ public class SPayUserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	UserDAO userDAO;
 	
+	@Autowired
+	CacheService cacheService;
+	
+	
+	
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		SPayUserDetails sPayUserDetails;
 		try {
-			System.out.println(username);
+			
 			List<Object[]> passwordAndUserid = userDAO.getPasswordandUserIDByEmailId(username);
 			
 			LoginCredentials loginCredentials=new LoginCredentials();
 			
 			loginCredentials.setPassword( (String) passwordAndUserid.get(0)[0]);
+			cacheService.setCurrentlyLoggedUser((Integer) passwordAndUserid.get(0)[1]);
 			
-			System.out.println(loginCredentials.getPassword());
 			loginCredentials.setEmailId(username);
 			sPayUserDetails = new SPayUserDetails(loginCredentials);
 			return sPayUserDetails;

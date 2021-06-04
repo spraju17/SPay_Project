@@ -23,8 +23,6 @@ public class UserProfileAPI {
 	@Autowired
 	UserProfileService userProfileService;
 	
-	@Autowired
-	AddressService addressService;
 	
 	@GetMapping("/userprofile/{userid}")
 	public ResponseEntity<User> getuserprofiledtails(@PathVariable Integer userid) throws Exception{
@@ -33,9 +31,7 @@ public class UserProfileAPI {
 		return responseEntity;
 	}
 	
-	@PostMapping("/userprofile/{userid}/address")
-	public ResponseEntity<ResponseMessage> addAddress(@RequestBody Address address){
-		addressService.addAddress(address);
-		return null;
-	}
+	
+	
+	
 }

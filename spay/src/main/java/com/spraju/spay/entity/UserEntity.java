@@ -162,7 +162,19 @@ public class UserEntity {
 		User user=new User();
 		user.setUserId(userEntity.getUserId());
 		user.setAccountStatus(userEntity.getAccountStatus());
+		if(userEntity.getAddressEntity()!=null) {
+			user.setAddress(AddressEntity.prepareAddress(userEntity.getAddressEntity()));
+		}
+		else
+			user.setAddress(null);
 		//user.setAddress(AddressEntity.prepareAddress(userEntity.getAddressEntity()));
+		if(userEntity.getCardEntities().size()!=0) {
+			List<CardEntity> cardEntities=userEntity.getCardEntities();
+			List<Card> cards = cardEntities.stream().map(CardEntity::prepareCard).collect(Collectors.toCollection(ArrayList::new));
+			user.setUserCards(cards);
+		}
+		else 
+			user.setUserCards(null);
 		//List<CardEntity> cardEntities=userEntity.getCardEntities();
 		//List<Card> cards = cardEntities.stream().map(CardEntity::prepareCard).collect(Collectors.toCollection(ArrayList::new));
 		//user.setUserCards(cards);
@@ -171,11 +183,16 @@ public class UserEntity {
 		user.setPassword(userEntity.getPassword());
 		user.setPhoneNumber(userEntity.getPhoneNumber());
 		user.setSecurityQuestionAnswer(userEntity.getSecurityQuestionAnswer());
-		//user.setSecurityQuestion(SecurityQuestionEntity.prepareSecurityQuestion(userEntity.getSecurityQuestionEntity()));
+		user.setSecurityQuestion(SecurityQuestionEntity.prepareSecurityQuestion(userEntity.getSecurityQuestionEntity()));
 		user.setTierLevel(userEntity.getTierLevel());
 		//List<Transaction> transactions=userEntity.getTransactionEntities().stream().map(TransactionEntity::prepareTransaction).collect(Collectors.toCollection(ArrayList::new));
 		//user.setUserTransactions(transactions);
 		user.setUserRole(userEntity.getUserRole());
+		if(userEntity.getUserWalletEntity()!=null) {
+			user.setUserWallet(UserWalletEntity.prepareUserWallet(userEntity.getUserWalletEntity()));
+		}
+		else
+			user.setUserWallet(null);
 		//user.setUserWallet(UserWalletEntity.prepareUserWallet(userEntity.getUserWalletEntity()));
 		return user;
 		

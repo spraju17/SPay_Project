@@ -4,7 +4,7 @@ import com.spraju.spay.entity.UserWalletEntity;
 
 public class UserWallet {
 	private Integer userWalletId;
-	private Float walletAmount;
+	private Double walletAmount;
 	private Integer points;
 	public Integer getUserWalletId() {
 		return userWalletId;
@@ -12,11 +12,11 @@ public class UserWallet {
 	public void setUserWalletId(Integer userWalletId) {
 		this.userWalletId = userWalletId;
 	}
-	public Float getWalletAmount() {
+	public Double getWalletAmount() {
 		return walletAmount;
 	}
-	public void setWalletAmount(Float walletAmount) {
-		this.walletAmount = walletAmount;
+	public void setWalletAmount(Double d) {
+		this.walletAmount = d;
 	}
 	public Integer getPoints() {
 		return points;

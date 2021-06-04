@@ -11,6 +11,7 @@ import com.spraju.spay.model.AccountStatus;
 import com.spraju.spay.model.TierLevel;
 import com.spraju.spay.model.User;
 import com.spraju.spay.model.UserRole;
+import com.spraju.spay.model.UserWallet;
 import com.spraju.spay.utility.PasswordEncryptDecrypt;
 import com.spraju.spay.validator.DetailsValidator;
 
@@ -37,6 +38,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 		user.setTierLevel(TierLevel.ONE);
 		user.setAccountStatus(AccountStatus.ACTIVE);
 		user.setUserRole(UserRole.ADMIN);
+		UserWallet userWallet=new UserWallet();
+		userWallet.setPoints(0);
+		userWallet.setWalletAmount(0.0);
+		user.setUserWallet(userWallet);
 		user.setPassword(PasswordEncryptDecrypt.toHexString(PasswordEncryptDecrypt.getSHA(user.getPassword())));
 		UserEntity userEntity=User.prepareUserEntity(user);
 		userDAO.save(userEntity);
