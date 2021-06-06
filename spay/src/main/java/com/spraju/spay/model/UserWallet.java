@@ -6,6 +6,7 @@ public class UserWallet {
 	private Integer userWalletId;
 	private Double walletAmount;
 	private Integer points;
+	
 	public Integer getUserWalletId() {
 		return userWalletId;
 	}
@@ -29,6 +30,7 @@ public class UserWallet {
 		UserWalletEntity userWalletEntity=new UserWalletEntity();
 		userWalletEntity.setPoints(userWallet.getPoints());
 		userWalletEntity.setWalletAmount(userWallet.getWalletAmount());
+	
 		return userWalletEntity;
 	}
 }

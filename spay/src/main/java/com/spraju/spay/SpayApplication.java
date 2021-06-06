@@ -14,6 +14,7 @@ import com.spraju.spay.validator.DetailsValidator;
 @EnableBatchProcessing
 @PropertySource(value = {"classpath:message.properties"} )
 public class SpayApplication implements CommandLineRunner {
+	
 	@Autowired
 	DetailsValidator detailsValidator;
 	

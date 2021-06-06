@@ -46,4 +46,5 @@ public class UserWalletEntity {
 		userWallet.setWalletAmount(userWalletEntity.getWalletAmount());
 		return userWallet;
 	}
+	
 }
