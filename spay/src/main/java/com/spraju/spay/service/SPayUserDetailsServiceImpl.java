@@ -33,6 +33,7 @@ public class SPayUserDetailsServiceImpl implements UserDetailsService {
 		
 		SPayUserDetails sPayUserDetails;
 		try {
+			System.out.println("inside load userbyusername");
 			
 			List<Object[]> passwordAndUserid = userDAO.getPasswordandUserIDByEmailId(username);
 			

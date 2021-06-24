@@ -29,7 +29,8 @@ public class UserWalletServiceImpl implements UserWalletService {
 	public String loadUserWalletMoney(CardToWalletTransfer cardToWalletTransfer) throws Exception {
 		DetailsValidator.amountValidator(cardToWalletTransfer);
 		Optional<UserEntity> userEntity=userDAO.findById(cacheService.getCurrentlyLoggedUser());
-		userEntity.get().getUserWalletEntity().setWalletAmount(cardToWalletTransfer.getAmountToTransfer());
+		Double existingAmount=userEntity.get().getUserWalletEntity().getWalletAmount();
+		userEntity.get().getUserWalletEntity().setWalletAmount(existingAmount+cardToWalletTransfer.getAmountToTransfer());
 		System.out.println(cardToWalletTransfer.getAmountToTransfer());
 		System.out.println(userEntity.get().getUserWalletEntity().getWalletAmount());
 		return "Amount added to wallet successfully";

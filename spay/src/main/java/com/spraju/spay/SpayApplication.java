@@ -28,7 +28,7 @@ public class SpayApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println(PasswordEncryptDecrypt.toHexString(PasswordEncryptDecrypt.getSHA("c06893f37e0735481233d047f8f1ea26f535d0dd7b3ae957ebb51eb64d79aeca")));
+		
 	}
 
 }
